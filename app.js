@@ -23,7 +23,7 @@ server.listen(port, () => {
 
 
 
-// sockei.io script goes here 
+// socket.io script goes here 
 io.on('connection', (socket) => {
     console.log('chat user connected', socket);
   });
