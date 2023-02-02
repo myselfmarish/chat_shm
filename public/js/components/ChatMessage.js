@@ -1,14 +1,24 @@
 export default {
-    name:'TheChatMessageComponent',
+    name: 'TheChatMesssageComponent',
 
     props: ['msg'],
 
+    data() {
+        return {
+            // check to see if the message's ID is the same as ours
+            // if it is, float to the right
+            // else float to the left
+            matchedID: this.$parent.socketID == this.msg.id
+        }
+    },
+
     template: `
-    <li>
-    <h1>{{ msg.message.user }}</h1>
-    <p>{{ msg.message.content }}</p>
-    </li>
-    `
+    <article class= "chat-messages" :class="{ 'other-messages' : matchedID }">
+        <h2>{{ msg.message.name }} says:</h2>
+        <p>{{ msg.message.content }}</p>
+    </article>
+    `,
 
 
 }
+

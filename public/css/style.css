@@ -36,8 +36,16 @@ input[type="submit"] {
 }
 
 .chat-messages {
+    float: left;
+    clear: both;
     width: 45%;
     border-radius: 1em;
     padding: 0.5em;
     background-color: rgba(0, 150, 150, 0.8);
+}
+
+.other-messages {
+    float: right;
+    background-color: rgb(150 0 140 / 80%);
+    
 }

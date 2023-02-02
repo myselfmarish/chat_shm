@@ -10,20 +10,26 @@
 <body>
     <h1>Home Page</h1>
 
+   
     <main id="app">
-      <form>
-        <label for="message">Something to Say</label>
-        <textarea v-model="message" id="textarea" autocomplete="off" class="message"></textarea>
-        <input @click.prevent="dispatchMessage" type="submit" value="Go!">
-
-        <section classs="messages">
-          <ul id="messages">
-             <!-- render a new component for every chat message we recieve -->
-             <newmsg v-for="message in messages" :msg="message"></newmsg>
-          </ul>
-
+        <section>
+            <h2>Input messages here:</h2>
+            <input v-model="nickname" id="nickname" type="text" placeholder="Nickname?">
+            
+            <form>
+                <label for="message">Something to say?</label>
+                <textarea @focus="dispatchTypingEvent" v-model="message" id="textarea" class="message" autocomplete="off"></textarea>
+                <input @click.prevent="dispatchMessage" type="submit" value="Send">
+            </form>
         </section>
-      </form>
+
+        <section class="messages">
+            <h2>Receive messages here:</h2>
+            <ul id="messages">
+                <!-- render a new message component for every message -->
+                <newmsg v-for="message in messages" :msg="message"></newmsg>
+            </ul>
+        </section>
     </main>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

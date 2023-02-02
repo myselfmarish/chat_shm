@@ -21,16 +21,19 @@ app.get('/', (req, res) => {
 // set up the server to listen for incoming connections at this part
 server.listen(port, () => {
   console.log('listening on ${port}');
+  
 });
 
 
 
 // socket.io script goes here 
 io.on('connection', (socket) => {
+  
     console.log('chat user connected:');
+    socket.emit('connected', {sID: socket.id, message:'new connection'})
 // step1 - recieve incoming messages
     socket.on ('chat_message', function(msg) {
-      console.log(msg) // have a look at message data
+      console.log(msg); // have a look at message data
 
       // step 2
       // rebroadcast the current message to everyone connected to our chat service
@@ -38,6 +41,10 @@ io.on('connection', (socket) => {
       
 
       io.emit ('new_message', { id: socket.id, message: msg });
+    })
+
+    socket.on('typing_event', function(user) {
+      io.emit('typing', user);
     })
   
   });

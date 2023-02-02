@@ -4,7 +4,7 @@
   "description": "chat app with node",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "node app"
   },
   "keywords": [
     "chat",

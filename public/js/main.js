@@ -3,6 +3,10 @@ import ChatMessage from "./components/ChatMessage.js";
 
 var socket = io();
 
+
+function setUserID({ sID }) {
+    vm.socketID = sID;
+}
 // utility function for socket
 function addNewMessage(message) {
 
@@ -10,13 +14,21 @@ function addNewMessage(message) {
 
 }
 
+function handleTypingEvent(user) {
+    console.log('someone is typing');
+}
+
+
+
 const { createApp } = Vue
 
 const vm = createApp({
     data() {
         return {
+            socketID:'',
             message: '', 
-            messages: []
+            messages: [],
+            nickname:''
         }
     },
 
@@ -24,10 +36,17 @@ const vm = createApp({
             dispatchMessage(){
                 console.log ('send a message to the chat servise');
 
-                socket.emit('chat_message', { content: this.message, user: this.username || 'anonymous'});
+                socket.emit('chat_message', { content: this.message, name: this.nickname || 'anonymous', 
+                id: this.socketID
+            });
 
                 this.message= '';
 
+            },
+
+            dispatchTypingEvent(){
+                // send the typing notification to the server
+                socket.emit('typing_event', {user: this.nickname || 'anonymous'})
             }
             
         },
@@ -37,5 +56,8 @@ const vm = createApp({
         }
 
     }).mount('#app')
-
+    
+    socket.addEventListener('connected', setUserID);
     socket.addEventListener('new_message', addNewMessage);
+    socket.addEventListener('typing',handleTypingEvent);
+
