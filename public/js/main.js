@@ -20,6 +20,7 @@ function handleTypingEvent(user) {
 
 function updateUsers(obj){
     vm.connectedUsers = obj.connectedUsers;
+    vm.notification = obj.message;
     console.log(obj.message);
     console.log(obj.connectedUsers);
 }
@@ -33,7 +34,8 @@ const vm = createApp({
             message: '', 
             messages: [],
             nickname:'',
-            connectedUsers:[]
+            connectedUsers:[],
+            notification:''
         }
     },
 

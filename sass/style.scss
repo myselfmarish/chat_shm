@@ -18,11 +18,20 @@ section {
   border-radius: 1em;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+.messages{
+  max-height: 300px;
+  overflow: auto;
+}
+.chat-messages{
+  color: blue;
+}
+.other-messages{
+  color: red;
+}
 
 h1, h2 {
   text-align: center;
   font-weight: bold;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 form {
@@ -101,5 +110,26 @@ form {
 
   &:hover {
     background-color: #555;
+  }
+}
+
+.info{
+  padding: 4em;
+  h3{
+    margin: 0;
+    font-size: 24px;
+    span{
+      color: green;
+    }
+  }
+  ul{
+    list-style: none;
+    font-size: 20px;
+  }
+  div{
+    text-align: center;
+    span{
+      color: green;
+    }
   }
 }

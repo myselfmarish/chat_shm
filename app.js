@@ -37,15 +37,10 @@ io.on('connection', (socket) => {
 // step1 - receive incoming messages
     socket.on ('chat_message', function(msg) {
       console.log(msg); // have a look at message data
-
       // step 2
       // rebroadcast the current message to everyone connected to our chat service
       // it gets sent to all users, including the original message creator
-      
-
       io.emit ('new_message', { id: socket.id, message: msg });
-
-
     })
 
     socket.on('nickname_event',function (obj){
@@ -53,7 +48,7 @@ io.on('connection', (socket) => {
         let updateUser = connectedUsers.find(user => user.id === obj.id);
         if (updateUser){
             updateUser.name=obj.name;
-            io.emit('update_users',{message:'Nickname updated', connectedUsers:connectedUsers})
+            io.emit('update_users',{message:obj.name+' Nickname updated', connectedUsers:connectedUsers})
         }
     });
 

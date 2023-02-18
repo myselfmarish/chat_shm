@@ -8,9 +8,7 @@
     <title>Chat App with Node and Socket </title>
 </head>
 <body>
-    <h1>Home Page</h1>
-
-
+    <h1>Chat App By Mariia Shevchenko!</h1>
     <main id="app">
         <section>
             <input v-model="nickname" id="nickname" type="text" placeholder="Nickname?">
@@ -30,10 +28,14 @@
                 <newmsg v-for="message in messages" :msg="message"></newmsg>
             </ul>
         </section>
-        <div>Number of Online Users: {{connectedUsers.length}}</div>
-        <ul>
-            <li v-for="users in connectedUsers">{{users.name}}</li>
-        </ul>
+        <section class="info">
+            <h3>Number of Online Users: <span>{{connectedUsers.length}}</span></h3>
+            <small>List of online users:</small>
+            <ul>
+                <li v-for="users in connectedUsers">&#x1F441;{{users.name}}</li>
+            </ul>
+            <div>Latest notification: <span>{{notification}}</span></div>
+        </section>
     </main>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="/socket.io/socket.io.js"></script>

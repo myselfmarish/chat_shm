@@ -20,10 +20,22 @@ section {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+.messages {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.chat-messages {
+  color: blue;
+}
+
+.other-messages {
+  color: red;
+}
+
 h1, h2 {
   text-align: center;
   font-weight: bold;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 form {
@@ -97,6 +109,27 @@ form input[type=submit]:active {
 }
 #submitNickname:hover {
   background-color: #555;
+}
+
+.info {
+  padding: 4em;
+}
+.info h3 {
+  margin: 0;
+  font-size: 24px;
+}
+.info h3 span {
+  color: green;
+}
+.info ul {
+  list-style: none;
+  font-size: 20px;
+}
+.info div {
+  text-align: center;
+}
+.info div span {
+  color: green;
 }
 
 /*# sourceMappingURL=style.css.map */
