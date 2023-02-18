@@ -18,7 +18,5 @@ export default {
         <p>{{ msg.message.content }}</p>
     </article>
     `,
-
-
 }
 

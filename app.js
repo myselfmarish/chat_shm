@@ -24,14 +24,17 @@ server.listen(port, () => {
   
 });
 
-
+//created array that holds a list of users
+let connectedUsers = [];
 
 // socket.io script goes here 
 io.on('connection', (socket) => {
-  
     console.log('chat user connected:');
-    socket.emit('connected', {sID: socket.id, message:'new connection'})
-// step1 - recieve incoming messages
+    connectedUsers.push({id:socket.id,name:'anonymous'});
+    socket.emit('connected', {sID: socket.id, message:'new connection',connectedUsers:connectedUsers})
+
+    io.emit('update_users',{message:'User connected',connectedUsers:connectedUsers});
+// step1 - receive incoming messages
     socket.on ('chat_message', function(msg) {
       console.log(msg); // have a look at message data
 
@@ -41,12 +44,28 @@ io.on('connection', (socket) => {
       
 
       io.emit ('new_message', { id: socket.id, message: msg });
+
+
     })
 
+    socket.on('nickname_event',function (obj){
+        console.log(obj);
+        let updateUser = connectedUsers.find(user => user.id === obj.id);
+        if (updateUser){
+            updateUser.name=obj.name;
+            io.emit('update_users',{message:'Nickname updated', connectedUsers:connectedUsers})
+        }
+    });
+
     socket.on('typing_event', function(user) {
+
       io.emit('typing', user);
     })
-  
+    socket.on('disconnect', function (){
+        console.log('user disconnected');
+        connectedUsers = connectedUsers.filter(usr=> usr.id !== socket.id);
+        io.emit('update_users',{message: 'User disconnected',connectedUsers:connectedUsers})
+    })
   });
 
 

@@ -10,12 +10,12 @@
 <body>
     <h1>Home Page</h1>
 
-   
+
     <main id="app">
         <section>
-            <h2>Input messages here:</h2>
             <input v-model="nickname" id="nickname" type="text" placeholder="Nickname?">
-            
+            <button id="submitNickname" @click="dispatchNicknameEvent">Create nickname</button>
+            <h2>Input messages here:</h2>
             <form>
                 <label for="message">Something to say?</label>
                 <textarea @focus="dispatchTypingEvent" v-model="message" id="textarea" class="message" autocomplete="off"></textarea>
@@ -30,12 +30,13 @@
                 <newmsg v-for="message in messages" :msg="message"></newmsg>
             </ul>
         </section>
+        <div>Number of Online Users: {{connectedUsers.length}}</div>
+        <ul>
+            <li v-for="users in connectedUsers">{{users.name}}</li>
+        </ul>
     </main>
-
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/main.js" type="module" defer></script>
-
-
 </body>
 </html>
