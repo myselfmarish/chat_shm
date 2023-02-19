@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="css/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App with Node and Socket </title>
+</head>
+<body>
+    <h1>Chat App By Mariia Shevchenko!</h1>
+    <main id="app">
+        <section>
+            <input v-model="nickname" id="nickname" type="text" placeholder="Nickname?">
+            <button id="submitNickname" @click="dispatchNicknameEvent">Create nickname</button>
+            <h2>Input messages here:</h2>
+            <form>
+                <label for="message">Something to say?</label>
+                <textarea @focus="dispatchTypingEvent" v-model="message" id="textarea" class="message" autocomplete="off"></textarea>
+                <input @click.prevent="dispatchMessage" type="submit" value="Send">
+            </form>
+        </section>
+
+        <section class="messages">
+            <h2>Receive messages here:</h2>
+            <ul id="messages">
+                <!-- render a new message component for every message -->
+                <newmsg v-for="message in messages" :msg="message"></newmsg>
+            </ul>
+        </section>
+        <section class="info">
+            <h3>Number of Online Users: <span>{{connectedUsers.length}}</span></h3>
+            <small>List of online users:</small>
+            <ul>
+                <li v-for="users in connectedUsers">&#x1F441;{{users.name}}</li>
+            </ul>
+            <div>Latest notification: <span>{{notification}}</span></div>
+        </section>
+    </main>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js" type="module" defer></script>
+</body>
+</html>

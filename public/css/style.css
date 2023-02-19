@@ -1,0 +1,135 @@
+body {
+  font-size: 16px;
+  background-color: #333;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+}
+
+section {
+  padding: 2em;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 1em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.messages {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.chat-messages {
+  color: blue;
+}
+
+.other-messages {
+  color: red;
+}
+
+h1, h2 {
+  text-align: center;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+form label {
+  display: block;
+  font-size: 0.9em;
+  padding-bottom: 1em;
+  font-weight: bold;
+}
+form textarea {
+  width: 100%;
+  height: 200px;
+  padding: 1em;
+  font-size: 1em;
+  border-radius: 0.5em;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: white;
+  resize: none;
+}
+form input[type=submit] {
+  margin-top: 1em;
+  padding: 0.8em 1.2em;
+  background-color: rgb(255, 165, 0);
+  border: none;
+  border-radius: 0.5em;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+form input[type=submit]:hover {
+  background-color: rgb(255, 140, 0);
+}
+form input[type=submit]:active {
+  transform: translateY(3px);
+}
+
+#nickname {
+  margin-bottom: 1em;
+  padding: 0.8em 1.2em;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 0.5em;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+#nickname:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#submitNickname {
+  display: block;
+  margin: auto;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #333;
+  transition: background-color 0.2s ease-in-out;
+}
+#submitNickname:hover {
+  background-color: #555;
+}
+
+.info {
+  padding: 4em;
+}
+.info h3 {
+  margin: 0;
+  font-size: 24px;
+}
+.info h3 span {
+  color: green;
+}
+.info ul {
+  list-style: none;
+  font-size: 20px;
+}
+.info div {
+  text-align: center;
+}
+.info div span {
+  color: green;
+}
+
+/*# sourceMappingURL=style.css.map */
